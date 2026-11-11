@@ -10,9 +10,9 @@
 <!-- Header images: the panel (left) and a layout seen with PixelView (right), side by side. -->
 
 **What it does** :
-- CAD and vector programs draw your linework with an OpenGL display engine: whatever the zoom, every line keeps at least one full pixel, so what you see is not an accurate picture of your drawing. With precise line drawings, that matters.
-- The usual workaround is to print to PDF, then open the PDF in a raster program such as Photoshop to see the real lineweights. PixelView shows your layout that way directly in Rhino, as close to the printed sheet as a screen can get.
-- The **1:1** button shows the drawing at its exact real-world size, as printed: the plugin detects your monitor's size and resolution and does the math.
+* CAD and vector programs (Rhino, AutoCAD, Revit, Archicad, Illustrator…) draw thin linework at a minimum of one full screen pixel, whatever the zoom level. Lines stay crisp and visible, but what you see is not an accurate picture of your drawing. With precise line drawings, that matters.
+* The usual workaround is to print to PDF, then open the PDF in a raster program such as Photoshop, which renders each line at its true width (a line thinner than a pixel comes out as a lighter grey). PixelView shows your layout that way directly in Rhino, as close to the printed sheet as a screen can get.
+* The 1:1 button shows the drawing at its exact real-world size, as printed: the plugin detects your monitor's size and resolution and does the math.
 
 <table>
   <tr>
