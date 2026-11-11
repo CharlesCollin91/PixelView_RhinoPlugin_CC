@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- PixelView_CC - Rhino 8 plug-in (Windows). Build: build.cmd (dotnet build -c Release). -->
+  <!-- PixelView_CC - Rhino 8 plug-in (Windows). Build: dotnet build -c Release (.NET 8 SDK). -->
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <!-- net48 loads in Rhino 8 under both runtimes (.NET Core and .NET Framework). -->

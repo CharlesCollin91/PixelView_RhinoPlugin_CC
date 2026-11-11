@@ -2,6 +2,8 @@
 
 PixelView_CC is a RhinoCommon plug-in written in C# (`.rhp`), shipped as a Rhino Package Manager package (`.yak`).
 This page explains the design decisions, how the project is laid out and where each step lives.
+The repository holds the source code only: the C# plug-in in `src/`, and in `python/` the Python prototype it was
+translated from.
 
 ## Design decisions
 
@@ -48,11 +50,8 @@ src/
   UI/
     PixelViewPanel.cs        the dockable PixelView_CC panel
   Resources/PixelView.ico    panel icon (embedded)
-build.cmd                    compiles the .rhp into dist\ (writes logs\build_<date>.log)
-pack.cmd                     makes the .yak package from dist\ with Rhino's Yak.exe
-publish.cmd                  sends the .yak to McNeel's test server, then to the public Package Manager
-manifest.yml                 package description for the Package Manager
-nuget.config                 package source for the build (nuget.org only)
+python/
+  PixelView_CC.py            the Python prototype (single file, Rhino 8 Python 3), see below
 ```
 
 ## Pipeline
@@ -114,17 +113,26 @@ millimetres per sheet millimetre (100% = real size).
   The hidden command `PixelViewLogFolder` opens that folder.
 - Log tags: `START`, `SETTING`, `RUN`, `API`, `DONE`, `VIEW`, `SCREEN`, `INFO`, `WARN`, `SKIP`, `ERROR`, `CLOSE`.
 
-## Build and package
+## Build
 
-1. Install the **.NET 8 SDK** (x64, free) once.
-2. `build.cmd`: compiles `dist\PixelView_CC.rhp` and copies `dist\pdfium.dll` (NuGet packages are downloaded the
-   first time). Close Rhino first if it has the `.rhp` loaded: the file is locked while Rhino runs.
-3. Test: drag `dist\PixelView_CC.rhp` into Rhino, restart Rhino.
-4. `pack.cmd`: builds the `.yak` package into `dist\` with Rhino 8's `Yak.exe`.
-5. `publish.cmd`: sign in (`yak login`), send to McNeel's test server, check the install from there, then publish.
+1. Install the **.NET 8 SDK** (x64, free) on Windows.
+2. `dotnet build src/PixelView_CC.csproj -c Release`: compiles `dist\PixelView_CC.rhp` and copies `dist\pdfium.dll`
+   next to it (NuGet packages are downloaded the first time, from nuget.org). Close Rhino first if it has the
+   `.rhp` loaded: the file is locked while Rhino runs.
+3. Test: drag `dist\PixelView_CC.rhp` into Rhino, restart Rhino, run `PixelView`.
 
-The version is set in `src/PixelView_CC.csproj` (`Version`, `AssemblyVersion`, `FileVersion`) and in
-`manifest.yml`. A version published on the Package Manager can never be replaced: every change gets a new number.
+The version is set in `src/PixelView_CC.csproj` (`Version`, `AssemblyVersion`, `FileVersion`). A version published
+on the Package Manager can never be replaced: every change gets a new number.
+
+## Python prototype
+
+`python/PixelView_CC.py` (v1.1) is the single-file Python 3 script the plug-in was developed from. It runs inside
+Rhino 8 (`! _-RunPythonScript "C:\path\to\PixelView_CC\PixelView_CC.py"`) and shows the layout in its own window.
+It differs from the plug-in in one point: it rasterises the PDF with PyMuPDF directly at the screen resolution of
+the zoom, while the plug-in rasterises once at a fixed resolution (Raster ppi) and resamples, the way Photoshop does.
+PyMuPDF (AGPL-3.0) is installed on first launch, after asking, in the script's folder. The script is laid out in
+sections: ENVIRONMENT GUARD, HEADER / IMPORTS, CONFIG, LOGGING, THEME, CORE (settings, PyMuPDF, screen, layout to PDF, view
+geometry), UI (`PluginUI`) and ENTRY POINT (`main`).
 
 ## Where to start for…
 

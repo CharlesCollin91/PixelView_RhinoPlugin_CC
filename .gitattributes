@@ -1,4 +1,0 @@
-# Windows scripts keep CRLF line endings (cmd.exe needs them for labels and goto).
-*.cmd text eol=crlf
-*.ico binary
-*.png binary
