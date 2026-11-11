@@ -20,11 +20,7 @@
 
 ## Install
 1. In Rhino: **Tools > Package Manager**, search **PixelView_CC**, click **Install**, then restart Rhino.
-2. Optional toolbar button, with this macro:
-   ```
-   ! _PixelView
-   ```
-3. Run `PixelView` (or click the button): the **PixelView_CC** panel opens. Open a layout tab.
+2. Run rhino command `_PixelView` (or click the button): the **PixelView_CC** panel opens. Open a layout tab.
 
 ## Interface
 - **Inputs** : the active layout tab (model viewports have no paper size).
