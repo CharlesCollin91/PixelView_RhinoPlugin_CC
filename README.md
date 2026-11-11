@@ -3,7 +3,7 @@
 <br>
 
 
-**The plugin** : See your Rhino layouts on screen the way they will print: true lineweights, at true real-world size. <br>
+**The plugin** : Display your Rhino layout on screen EXACTLY the way it will print: true lineweights, at true real-world size. <br>
 <br>
 <img width="3837" height="2060" alt="PLugin1" src="https://github.com/user-attachments/assets/b3e0ca6f-93ca-41a9-9572-6f153e458d7d" />
 <br>
