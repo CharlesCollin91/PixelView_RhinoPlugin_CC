@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- PixelView_CC - Rhino 8 plug-in (Windows). Build: build.cmd (dotnet build -c Release). -->
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <!-- net48 loads in Rhino 8 under both runtimes (.NET Core and .NET Framework). -->
+    <LangVersion>8.0</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <TargetExt>.rhp</TargetExt>
+    <AssemblyName>PixelView_CC</AssemblyName>
+    <RootNamespace>PixelViewCC</RootNamespace>
+    <Version>1.1.1</Version>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
+    <Product>PixelView_CC</Product>
+    <Company>Charles Collin Architecte</Company>
+    <Description>Shows Rhino layouts as pixels, like a PDF placed in Photoshop: true lineweights at true 1:1 size.</Description>
+    <Copyright>GPL-3.0</Copyright>
+    <OutputPath>..\dist\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Oldest Rhino 8 SDK: the plug-in then loads in every Rhino 8 service release. -->
+    <PackageReference Include="RhinoCommon" Version="8.0.23304.9001" ExcludeAssets="runtime" />
+    <!-- Lets the .NET 8 SDK build net48 without installing the .NET Framework developer pack. -->
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <!-- PDFium binaries (BSD-3-Clause / Apache-2.0), only pdfium.dll x64 is shipped. -->
+    <PackageReference Include="bblanchon.PDFium.Win32" Version="159.0.8152" GeneratePathProperty="true" ExcludeAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <EmbeddedResource Include="Resources\PixelView.ico" LogicalName="PixelViewCC.PixelView.ico" />
+  </ItemGroup>
+
+  <!-- Ship pdfium.dll next to the .rhp. -->
+  <Target Name="CopyPdfium" AfterTargets="Build">
+    <Copy SourceFiles="$(Pkgbblanchon_PDFium_Win32)\runtimes\win-x64\native\pdfium.dll" DestinationFolder="$(OutDir)" />
+    <Message Importance="high" Text="PDFium package: $(Pkgbblanchon_PDFium_Win32)" />
+  </Target>
+
+</Project>

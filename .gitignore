@@ -1,0 +1,22 @@
+# Build output
+dist/
+bin/
+obj/
+*.rhp
+*.yak
+*.pdb
+pdfium.dll
+
+# Logs and archives
+logs/
+*.log
+zzold/
+
+# Editors and OS
+.vs/
+.vscode/
+*.user
+*.suo
+Thumbs.db
+Desktop.ini
+.DS_Store

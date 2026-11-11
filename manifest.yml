@@ -1,0 +1,21 @@
+---
+name: PixelView_CC
+version: 1.1.1
+authors:
+- Charles Collin Architecte
+description: >
+  See your Rhino layouts as pixels, like a PDF placed in Photoshop: lines thinner
+  than a pixel become light grey instead of a full black pixel, so lineweights look
+  as they will print. True 1:1 zoom on screen (monitor size read automatically).
+  Command: PixelView (opens the PixelView_CC panel). Windows only, Rhino 8.
+  License GPL-3.0-or-later; includes PDFium (BSD-3-Clause / Apache-2.0).
+url: https://github.com/CharlesCollin91/PixelView_RhinoPlugin_CC
+icon: icon.png
+keywords:
+- layout
+- lineweight
+- print
+- pdf
+- preview
+- raster
+- photoshop
