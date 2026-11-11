@@ -14,6 +14,20 @@
 - The usual workaround is to print to PDF, then open the PDF in a raster program such as Photoshop to see the real lineweights. PixelView shows your layout that way directly in Rhino, as close to the printed sheet as a screen can get.
 - The **1:1** button shows the drawing at its exact real-world size, as printed: the plugin detects your monitor's size and resolution and does the math.
 
+<table>
+  <tr>
+    <td align="center">
+      <img height="600" alt="RasterSoftwareView" src="https://github.com/user-attachments/assets/73b9f514-a866-4e23-8a92-c8d4ba61fc74" />
+      <br><b>RasterSoftwareView</b>
+    </td>
+    <td align="center">
+      <img height="600" alt="VectorSoftwareView" src="https://github.com/user-attachments/assets/8ae614d8-bfc5-4dcd-a8e3-f831c9007246" />
+      <br><b>VectorSoftwareView</b>
+    </td>
+  </tr>
+</table>
+
+
 **Requirements** : Windows, Rhino 8 <br>
 **Actual Plugin Version** : 1.1.1 <br>
 **License** : [GPL-3.0-or-later](LICENSE) — you may use, study, modify and share it; modified versions stay under the same license. Includes PDFium (BSD-3-Clause / Apache-2.0), see [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
